@@ -1,0 +1,15 @@
+version: '2'
+services:
+    jhip01-app:
+        image: jhip01
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATA_MONGODB_URI=mongodb://jhip01-mongodb:27017
+            - SPRING_DATA_MONGODB_DATABASE=jhip01
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    jhip01-mongodb:
+        extends:
+            file: mongodb.yml
+            service: jhip01-mongodb
